@@ -171,33 +171,32 @@ int changeSpeedGameScanf() {
   return speedGame;
 }
 
-int enterHumanCoordinates(int **a, int n, int m) {
+void enterHumanCoordinates(int **a, int n, int m) {
   bool Success = true;
   int x = 0;
   int y = 0;
   bool endOfEnter = false;
   char endOfCoordinates;
   zeroMatrix(a, n, m);
-  while (endOfEnter != true && Success != false &&
-         scanf("%d%d%c", &x, &y, &endOfCoordinates) == 3) {
+  while (endOfEnter != true && Success != false
+    && scanf("%d%d%c", &x, &y, &endOfCoordinates) == 3) {
     Success = true;
     --x;
     --y;
-    if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
-      printw("out of frame\n");
-      Success = false;
-    }
-    if (endOfCoordinates != END_OF_COORDINATES && endOfCoordinates != '.') {
-      printw("bad end of coordinates: '%c'\n", endOfCoordinates);
-      Success = false;
-    }
-    if (Success)
-      a[x][y] = 1;
-    if (endOfCoordinates == '.') {
-      endOfEnter = true;
-    }
+    printw("%d %d\n", x, y);
+  if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
+    printw("Out of frame\n");
+    Success = false;
   }
-  return Success;
+  if (endOfCoordinates != END_OF_COORDINATES && endOfCoordinates != '.') {
+    printw("Bad end of coordinates: '%c'\n", endOfCoordinates);
+    Success = false;
+  }
+  if (Success)
+    a[x][y] = 1;
+  if (endOfCoordinates == '.')
+    endOfEnter = true;
+  }
 }
 
 int enterFileCoordinates(int **a, int n, int m) {
@@ -227,8 +226,8 @@ void zeroMatrix(int **a, int n, int m) {
 bool allocate(int ***matrix, int n, int m) {
   bool Success = false;
   *matrix = (int **)malloc(n * m * sizeof(int) + n * sizeof(int *));
-//  if (*matrix != NULL)
-//      Success = true;
+  if (*matrix != NULL)
+      Success = true;
   int *ptr = (int *)(*matrix + n);
   for (int i = 0; i < n; i++)
     (*matrix)[i] = ptr + m * i;
