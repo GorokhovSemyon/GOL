@@ -19,12 +19,19 @@
 // настройки управления игрой
 #define PAUSE ' '
 #define CURSOR_UP 'w'
+#define CURSOR_UP_UPPER 'W'
 #define CURSOR_DOWN 's'
+#define CURSOR_DOWN_UPPER 'S'
 #define CURSOR_LEFT 'a'
+#define CURSOR_LEFT_UPPER 'A'
 #define CURSOR_RIGHT 'd'
+#define CURSOR_RIGHT_UPPER 'D'
 #define CURSOR_SWITCH 'f'
+#define CURSOR_SWITCH_UPPER 'F'
 #define ENTER_LIFE 'e'
+#define ENTER_LIFE_UPPER 'E'
 #define DELETE_LIFE 'q'
+#define DELETE_LIFE_UPPER 'Q'
 #define EXIT 27
 
 // настройки ручного ввода
