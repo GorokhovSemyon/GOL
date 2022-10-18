@@ -37,11 +37,29 @@ void cursorControl(char command, bool *Cursor, int *k_x, int *k_y,
     }
     break;
   }
+  case CURSOR_SWITCH_UPPER: {
+      if (*Cursor == false) {
+          *Cursor = true;
+          *k_x = WIDTH / 2;
+          *k_y = HEIGHT / 2;
+      } else if (*Cursor == true) {
+          *Cursor = false;
+          *k_x = -1;
+          *k_y = -1;
+      }
+      break;
+  }
   case CURSOR_UP: {
     if (*Cursor)
       if (*k_y > 0)
         (*k_y)--;
     break;
+  }
+  case CURSOR_UP_UPPER: {
+      if (*Cursor)
+          if (*k_y > 0)
+              (*k_y)--;
+      break;
   }
   case CURSOR_DOWN: {
     if (*Cursor)
@@ -49,11 +67,23 @@ void cursorControl(char command, bool *Cursor, int *k_x, int *k_y,
         (*k_y)++;
     break;
   }
+  case CURSOR_DOWN_UPPER: {
+      if (*Cursor)
+          if (*k_y < HEIGHT - 1)
+              (*k_y)++;
+      break;
+  }
   case CURSOR_LEFT: {
     if (*Cursor)
       if (*k_x > 0)
         (*k_x)--;
     break;
+  }
+  case CURSOR_LEFT_UPPER: {
+      if (*Cursor)
+          if (*k_x > 0)
+              (*k_x)--;
+      break;
   }
   case CURSOR_RIGHT: {
     if (*Cursor)
@@ -61,15 +91,33 @@ void cursorControl(char command, bool *Cursor, int *k_x, int *k_y,
         (*k_x)++;
     break;
   }
+  case CURSOR_RIGHT_UPPER: {
+      if (*Cursor)
+          if (*k_x < WIDTH - 1)
+              (*k_x)++;
+      break;
+  }
   case ENTER_LIFE: {
     if (*Cursor) {
       field[*k_y][*k_x] = 1;
     }
     break;
   }
+  case ENTER_LIFE_UPPER: {
+      if (*Cursor) {
+          field[*k_y][*k_x] = 1;
+      }
+      break;
+  }
   case DELETE_LIFE: {
       if (*Cursor) {
         field[*k_y][*k_x] = 0;
+      }
+      break;
+  }
+  case DELETE_LIFE_UPPER: {
+      if (*Cursor) {
+          field[*k_y][*k_x] = 0;
       }
       break;
   }
@@ -127,14 +175,14 @@ int enterHumanCoordinates(int **a, int n, int m) {
   bool Success = true;
   int x = 0;
   int y = 0;
-  int endOfEnter = 0;
+  bool endOfEnter = false;
   char endOfCoordinates;
   zeroMatrix(a, n, m);
-  while (endOfEnter != 1 && Success != false &&
+  while (endOfEnter != true && Success != false &&
          scanf("%d%d%c", &x, &y, &endOfCoordinates) == 3) {
     Success = true;
-    x--;
-    y--;
+    --x;
+    --y;
     if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
       printw("out of frame\n");
       Success = false;
@@ -146,7 +194,7 @@ int enterHumanCoordinates(int **a, int n, int m) {
     if (Success)
       a[x][y] = 1;
     if (endOfCoordinates == '.') {
-      endOfEnter = 1;
+      endOfEnter = true;
     }
   }
   return Success;
@@ -179,8 +227,8 @@ void zeroMatrix(int **a, int n, int m) {
 bool allocate(int ***matrix, int n, int m) {
   bool Success = false;
   *matrix = (int **)malloc(n * m * sizeof(int) + n * sizeof(int *));
-  if (*matrix != NULL)
-      Success = true;
+//  if (*matrix != NULL)
+//      Success = true;
   int *ptr = (int *)(*matrix + n);
   for (int i = 0; i < n; i++)
     (*matrix)[i] = ptr + m * i;

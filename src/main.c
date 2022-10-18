@@ -1,29 +1,37 @@
 #include "game_of_life.h"
 #include "drawings.h"
 
-int main(int argc, char **argv) {
+int main() {
     bool Exit = false;
     bool AllDeath = false;
     bool Pause = false;
     bool Movement = true;
     bool Cursor = false;
+    char choice = ' ';
     int SPEED_GAME = 100000;
     int k_x = -1;
     int k_y = -1;
     int **field = NULL;
     FILE *file = NULL;
     drawGreeting();
+    printf("Do you want to enter the coordinates of the first life yourself? (y/n)\n");
+    scanf("%c", &choice);
     allocate(&field, HEIGHT, WIDTH);
-    if (*(argv[1]) == '1' || *(argv[1]) == '0') {
-        if (*(argv[1]) == '1') {
-            enterFileCoordinates(field, HEIGHT, WIDTH);
-            file = freopen("/dev/tty", "r", stdin);
-        } else {
-            enterHumanCoordinates(field, HEIGHT, WIDTH);
-            SPEED_GAME = changeSpeedGameScanf();
-        }
-    } else
+    if (choice == 'y' || choice == 'Y') {
+        printf("Do you know any secret combinations?) Enter them in the format\n"
+               "<X1> <Y2>\n"
+               ".........\n"
+               "<Xn> <Yn>.\n");
+        enterHumanCoordinates(field, HEIGHT, WIDTH);
+        SPEED_GAME = changeSpeedGameScanf();
+    } else if (choice == 'n' || choice == 'N') {
+        printf("Enter the file name to see the beauty!\n");
+        enterFileCoordinates(field, HEIGHT, WIDTH);
+        file = freopen("/dev/tty", "r", stdin);
+    } else {
+        free(field);
         return 0;
+    }
     initscr();
     noecho();
     nodelay(stdscr, true);
@@ -50,6 +58,7 @@ int main(int argc, char **argv) {
     if (!Movement)
         drawInfinity();
     free(field);
-    fclose(file);
+    if (file != NULL)
+        fclose(file);
     return 0;
 }
