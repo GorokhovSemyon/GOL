@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-// настройка поля
 #define HEIGHT 20
 #define WIDTH 80
 #define SYMBOL_BORT '='
@@ -16,7 +15,6 @@
 #define SYMBOL_K_LIVE 'L'
 #define SYMBOL_K_DEATH 'D'
 
-// настройки управления игрой
 #define PAUSE ' '
 #define CURSOR_UP 'w'
 #define CURSOR_UP_UPPER 'W'
@@ -34,18 +32,16 @@
 #define DELETE_LIFE_UPPER 'Q'
 #define EXIT 27
 
-// настройки ручного ввода
-#define BETWEEN_XY ' '
 #define END_OF_COORDINATES '\n'
 
 bool allocate(int ***matrix, int n, int m);
-int enterHumanCoordinates(int **a, int n, int m);
 int enterFileCoordinates(int **a, int n, int m);
 int changeSpeedGameScanf();
 int check_life(int **matrix, int n, int m, int row, int column);
 int countAlive(int **matrix, int n, int m);
 int update(int ***matrix, int n, int m);
 
+void enterHumanCoordinates(int **a, int n, int m);
 void changeSpeedGame(char speedMode, int *speedGame);
 void printwField(int **A, int N, int M, int k_x, int k_y);
 void printfField(int **A, int N, int M);

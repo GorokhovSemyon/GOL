@@ -16,7 +16,8 @@ int main() {
     drawGreeting();
     printf("Do you want to enter the coordinates of the first life yourself? (y/n)\n");
     scanf("%c", &choice);
-    allocate(&field, HEIGHT, WIDTH);
+    if (allocate(&field, HEIGHT, WIDTH) == false)
+        return 0;
     if (choice == 'y' || choice == 'Y') {
         printf("Do you know any secret combinations?) Enter them in the format\n"
                "<X1> <Y2>\n"
