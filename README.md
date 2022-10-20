@@ -4,7 +4,7 @@ This is a logic game in which life arises and dies according to certain laws - [
 ## Libraries for dynamic version
 - [`ncurses`](https://en.wikipedia.org/wiki/Ncurses) - for real-time mode 
 - [`stdio`](https://www.tutorialspoint.com/c_standard_library/stdio_h.htm) - for other primitive actions (e. g. printf())
-- [`unistd`](https://en.wikipedia.org/wiki/Unistd.h)
+- [`unistd`](https://en.wikipedia.org/wiki/Unistd.h) - for the necessary console output presets
 
 ## Compilation
 Go to the GOL folder and enter in the terminal:
@@ -23,4 +23,4 @@ Coordinates can be entered both manually and by reading from a file, for which i
 You can use the special "Creator mod" to add ('e') or remove ('q') life, to enter this mode you must press 'f' (both lowercase and uppercase commands are supported).
 
 ### Gif from original "Game of Life"
-![GIF]()
+![GIF](https://github.com/GorokhovSemyon/GOL/blob/develop/Gospers_glider_gun.gif)
