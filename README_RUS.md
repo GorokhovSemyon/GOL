@@ -3,8 +3,9 @@
 
 ## Библиотеки для динамической версии
 - [`ncurses`](https://en.wikipedia.org/wiki/Ncurses) - для режима игры в реальном времени
-- [`stdio`](https://www.tutorialspoint.com/c_standard_library/stdio_h.htm) - для базовых операций ввода-вывода
 - [`unistd`](https://en.wikipedia.org/wiki/Unistd.h) - для предустановок консольного вывода
+- [`stdio`](https://www.tutorialspoint.com/c_standard_library/stdio_h.htm) - для базовых операций ввода-вывода
+
 
 ## Компиляция
 Перейдите в папку GOL и введите в терминале:

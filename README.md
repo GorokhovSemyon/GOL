@@ -3,8 +3,8 @@ This is a logic game in which life arises and dies according to certain laws - [
 
 ## Libraries for dynamic version
 - [`ncurses`](https://en.wikipedia.org/wiki/Ncurses) - for real-time mode 
-- [`stdio`](https://www.tutorialspoint.com/c_standard_library/stdio_h.htm) - for other primitive actions (e. g. printf())
 - [`unistd`](https://en.wikipedia.org/wiki/Unistd.h) - for the necessary console output presets
+- [`stdio`](https://www.tutorialspoint.com/c_standard_library/stdio_h.htm) - for other primitive actions (e. g. printf())
 
 ## Compilation
 Go to the GOL folder and enter in the terminal:
