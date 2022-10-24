@@ -27,8 +27,7 @@ int main() {
         SPEED_GAME = changeSpeedGameScanf();
     } else if (choice == 'n' || choice == 'N') {
         printf("Enter the file name to see the beauty!\n");
-        enterFileCoordinates(field, HEIGHT, WIDTH);
-        file = freopen("/dev/tty", "r", stdin);
+        inputCoordinatesFromFile(field, HEIGHT, WIDTH);
     } else {
         free(field);
         return 0;

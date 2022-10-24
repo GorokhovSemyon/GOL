@@ -41,6 +41,9 @@ int check_life(int **matrix, int n, int m, int row, int column);
 int countAlive(int **matrix, int n, int m);
 int update(int ***matrix, int n, int m);
 
+char* scan();
+
+void inputCoordinatesFromFile(int **a, int n, int m);
 void enterHumanCoordinates(int **a, int n, int m);
 void changeSpeedGame(char speedMode, int *speedGame);
 void printwField(int **A, int N, int M, int k_x, int k_y);
