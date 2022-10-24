@@ -349,3 +349,76 @@ void printfField(int **A, int N, int M) {
       printf("\n");
   }
 }
+
+char* scan() {
+    int c;
+    char* string = malloc(sizeof(char));
+    string[0]='\0';
+    for(int i=0; i<100 && (c=getchar())!='\n' && c != EOF ; i++) {
+        string = realloc(string, (i+2)*sizeof(char));
+        string[i] = (char) c;
+        string[i+1] = '\0';
+    }
+    return string;
+}
+
+char *fileToStr(char *path) {
+    int size = 100;
+    char *string = malloc(size * sizeof(char));
+    FILE *file = fopen(path, "r");
+    if (file) {
+        char ch = '0';
+        int cnt = 0;
+        while (ch != EOF) {
+            ch = fgetc(file);
+            if (ch != EOF) {
+                if (cnt >= size) {
+                    string = realloc(string, cnt * 2);
+                    size *= 2;
+                }
+                string[cnt] = ch;
+                cnt++;
+            }
+        }
+        fclose(file);
+    } else {
+        printf("Error with file's path\n");
+        string = NULL;
+    }
+    return string;
+}
+
+int isIntNumber(char ch) {
+    if (ch >= '0' && ch <= '9')
+        return 1;
+    else
+        return 0;
+}
+
+int charToInt(char ch) {
+    return ch - 48;
+}
+
+void stringToMatrix(char *str, int **matrix) {
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    while(str[i] != '\0') {
+        if (isIntNumber(str[i])) {
+            matrix[j][k] = charToInt(str[i]);
+            k++;
+        } else if (str[i] == '\n') {
+            j++;
+            k = 0;
+        }
+        i++;
+    }
+}
+
+void inputCoordinatesFromFile(int **a, int n, int m) {
+    char *file = scan();
+    char *drawing = fileToStr(file);
+    free(file);
+    stringToMatrix(drawing, a);
+    free(drawing);
+}
