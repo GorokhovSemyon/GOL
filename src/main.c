@@ -19,7 +19,7 @@ int main() {
     if (allocate(&field, HEIGHT, WIDTH) == false)
         return 0;
     if (choice == 'y' || choice == 'Y') {
-        printf("Do you know any secret combinations?) Enter them in the format\n"
+        printf("Do you know any secret combinations?:) Enter them in the format\n"
                "<X1> <Y2>\n"
                ".........\n"
                "<Xn> <Yn>\n"
