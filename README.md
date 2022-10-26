@@ -23,4 +23,4 @@ Coordinates can be entered both manually and by reading from a file, for which i
 You can use the special "Creator mod" to add ('e') or remove ('q') life, to enter this mode you must press 'f' (both lowercase and uppercase commands are supported).
 
 ### Gif from original "Game of Life"
-![GIF](https://github.com/GorokhovSemyon/GOL/blob/develop/Gospers_glider_gun.gif)
+![GIF](https://github.com/GorokhovSemyon/GOL/blob/develop/materials/Gospers_glider_gun.gif)
