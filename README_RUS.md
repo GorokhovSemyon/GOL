@@ -24,4 +24,4 @@ $ ./GOL
 Вы можете использовать специальный "Creator mod", чтобы добавить ('e') или удалить ('q') жизнь, чтобы войти в этот режим, вы должны нажать "f" (поддерживаются как строчные, так и прописные команды).
 
 ### Gif из оригинальной "Игры в жизнь"
-![GIF](https://github.com/GorokhovSemyon/GOL/blob/develop/Gospers_glider_gun.gif)
+![GIF](https://github.com/GorokhovSemyon/GOL/blob/develop/materials/Gospers_glider_gun.gif)
