@@ -366,7 +366,7 @@ char *fileToStr(char *path) {
     int size = 100;
     char *string = malloc(size * sizeof(char));
     FILE *file = fopen(path, "r");
-    if (file) {
+    if (file != NULL) {
         char ch = '0';
         int cnt = 0;
         while (ch != EOF) {
@@ -421,4 +421,11 @@ void inputCoordinatesFromFile(int **a, int n, int m) {
     free(file);
     stringToMatrix(drawing, a);
     free(drawing);
+}
+
+void clean_stdin() {
+    int c;
+    do {
+        c = getchar();
+    } while (c != '\n' && c != EOF);
 }
