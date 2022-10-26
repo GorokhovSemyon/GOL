@@ -399,13 +399,6 @@ int charToInt(char ch) {
     return ch - 48;
 }
 
-void clean_stdin() {
-    int c;
-    do {
-        c = getchar();
-    } while (c != '\n' && c != EOF);
-}
-
 void stringToMatrix(char *str, int **matrix) {
     int i = 0;
     int j = 0;
@@ -428,4 +421,11 @@ void inputCoordinatesFromFile(int **a, int n, int m) {
     free(file);
     stringToMatrix(drawing, a);
     free(drawing);
+}
+
+void clean_stdin() {
+    int c;
+    do {
+        c = getchar();
+    } while (c != '\n' && c != EOF);
 }
