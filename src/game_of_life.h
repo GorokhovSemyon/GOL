@@ -43,6 +43,7 @@ int update(int ***matrix, int n, int m);
 
 char* scan();
 
+void clean_stdin();
 void inputCoordinatesFromFile(int **a, int n, int m);
 void enterHumanCoordinates(int **a, int n, int m);
 void changeSpeedGame(char speedMode, int *speedGame);

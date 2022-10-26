@@ -22,11 +22,13 @@ int main() {
         printf("Do you know any secret combinations?) Enter them in the format\n"
                "<X1> <Y2>\n"
                ".........\n"
-               "<Xn> <Yn>.\n");
+               "<Xn> <Yn>\n"
+               ".\n");
         enterHumanCoordinates(field, HEIGHT, WIDTH);
         SPEED_GAME = changeSpeedGameScanf();
     } else if (choice == 'n' || choice == 'N') {
         printf("Enter the file name to see the beauty!\n");
+        clean_stdin();
         inputCoordinatesFromFile(field, HEIGHT, WIDTH);
     } else {
         free(field);
