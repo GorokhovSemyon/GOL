@@ -35,6 +35,7 @@
 #define END_OF_COORDINATES '\n'
 
 bool allocate(int ***matrix, int n, int m);
+bool inputCoordinatesFromFile(int **a, int n, int m);
 int enterFileCoordinates(int **a, int n, int m);
 int changeSpeedGameScanf();
 int check_life(int **matrix, int n, int m, int row, int column);
@@ -44,7 +45,6 @@ int update(int ***matrix, int n, int m);
 char* scan();
 
 void clean_stdin();
-void inputCoordinatesFromFile(int **a, int n, int m);
 void enterHumanCoordinates(int **a, int n, int m);
 void changeSpeedGame(char speedMode, int *speedGame);
 void printwField(int **A, int N, int M, int k_x, int k_y);
