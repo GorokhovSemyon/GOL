@@ -7,6 +7,7 @@ int main() {
     bool Pause = false;
     bool Movement = true;
     bool Cursor = false;
+    bool success = false;
     char choice = ' ';
     int SPEED_GAME = 100000;
     int k_x = -1;
@@ -29,38 +30,40 @@ int main() {
     } else if (choice == 'n' || choice == 'N') {
         printf("Enter the file name to see the beauty!\n");
         clean_stdin();
-        inputCoordinatesFromFile(field, HEIGHT, WIDTH);
+        success = inputCoordinatesFromFile(field, HEIGHT, WIDTH);
     } else {
         free(field);
         return 0;
     }
-    initscr();
-    noecho();
-    nodelay(stdscr, true);
-    printwField(field, HEIGHT, WIDTH, k_x, k_y);
-    while (!Exit && !AllDeath && Movement) {
-        usleep(SPEED_GAME);
-        refresh();
-        clear();
-        if (!Pause)
-            Movement = update(&field, HEIGHT, WIDTH);
+    if (success) {
+        initscr();
+        noecho();
+        nodelay(stdscr, true);
         printwField(field, HEIGHT, WIDTH, k_x, k_y);
-        drawManual();
-        gameControl(getch(), &Pause, &Exit, &Cursor, &SPEED_GAME, &k_x, &k_y,
-                    field);
-        if (!countAlive(field, HEIGHT, WIDTH))
-            AllDeath = true;
+        while (!Exit && !AllDeath && Movement) {
+            usleep(SPEED_GAME);
+            refresh();
+            clear();
+            if (!Pause)
+                Movement = update(&field, HEIGHT, WIDTH);
+            printwField(field, HEIGHT, WIDTH, k_x, k_y);
+            drawManual();
+            gameControl(getch(), &Pause, &Exit, &Cursor, &SPEED_GAME, &k_x, &k_y,
+                        field);
+            if (!countAlive(field, HEIGHT, WIDTH))
+                AllDeath = true;
+        }
+        endwin();
+        printfField(field, HEIGHT, WIDTH);
+        if (Exit)
+            drawGameOver();
+        if (AllDeath)
+            drawLiveDeath();
+        if (!Movement)
+            drawInfinity();
+        free(field);
+        if (file != NULL)
+            fclose(file);
     }
-    endwin();
-    printfField(field, HEIGHT, WIDTH);
-    if (Exit)
-        drawGameOver();
-    if (AllDeath)
-        drawLiveDeath();
-    if (!Movement)
-        drawInfinity();
-    free(field);
-    if (file != NULL)
-        fclose(file);
     return 0;
 }

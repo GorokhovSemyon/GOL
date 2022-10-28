@@ -383,6 +383,7 @@ char *fileToStr(char *path) {
         fclose(file);
     } else {
         printf("Error with file's path\n");
+        free(string);
         string = NULL;
     }
     return string;
@@ -415,12 +416,18 @@ void stringToMatrix(char *str, int **matrix) {
     }
 }
 
-void inputCoordinatesFromFile(int **a, int n, int m) {
+bool inputCoordinatesFromFile(int **a, int n, int m) {
+    bool success;
     char *file = scan();
     char *drawing = fileToStr(file);
-    free(file);
-    stringToMatrix(drawing, a);
-    free(drawing);
+    if (drawing != NULL) {
+        free(file);
+        stringToMatrix(drawing, a);
+        free(drawing);
+        success = true;
+    } else
+        success = false;
+    return success;
 }
 
 void clean_stdin() {
